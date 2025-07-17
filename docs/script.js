@@ -21,58 +21,31 @@ const courses = [
   { id: "Química General II", semester: 3, credits: 5 },
   { id: "Botánica Marina", semester: 3, credits: 4, prereq: ["Introducción a la Biodiversidad Marina"] },
   { id: "Zoología Marina", semester: 3, credits: 5, prereq: ["Introducción a la Biodiversidad Marina"] },
-  { id: "Complementario 3", semester: 3, credits: 2 }
-];
+  { id: "Complementario 3", semester: 3, credits: 2 },
 
-const chart = document.getElementById('chart');
-const approved = new Set();
+  // Semestre 4
+  { id: "Bioestadística I", semester: 4, credits: 4, prereq: ["Matemática II"] },
+  { id: "Física II", semester: 4, credits: 4, prereq: ["Física I"] },
+  { id: "Química Orgánica", semester: 4, credits: 4, prereq: ["Química General II"] },
+  { id: "Biología de Recursos", semester: 4, credits: 4, prereq: ["Botánica Marina", "Zoología Marina"] },
+  { id: "Fundamentos y Metodología de las ciencias", semester: 4, credits: 3, prereq: ["Botánica Marina", "Zoología Marina"] },
+  { id: "Electivo 1", semester: 4, credits: 4 },
 
-function isAvailable(course) {
-  if (!course.prereq) return true;
-  return course.prereq.every(p => approved.has(p));
-}
+  // Semestre 5
+  { id: "Bioestadística II", semester: 5, credits: 4, prereq: ["Bioestadística I", "Fundamentos y Metodología de las ciencias"] },
+  { id: "Oceanografía General", semester: 5, credits: 4, prereq: ["Física I", "Introducción a las Ciencias del Mar", "Introducción a la Biodiversidad Marina", "Química General II"] },
+  { id: "Análisis Instrumental", semester: 5, credits: 4, prereq: ["Química Orgánica"] },
+  { id: "Biología Pesquera", semester: 5, credits: 4, prereq: ["Bioestadística I", "Biología de Recursos"] },
+  { id: "Electivo 2", semester: 5, credits: 4 },
 
-function render() {
-  chart.innerHTML = "";
-  const grouped = {};
-  courses.forEach(c => {
-    if (!grouped[c.semester]) grouped[c.semester] = [];
-    grouped[c.semester].push(c);
-  });
+  // Semestre 6
+  { id: "Bioquímica", semester: 6, credits: 4, prereq: ["Química Orgánica"] },
+  { id: "Oceanografía Biológica", semester: 6, credits: 4, prereq: ["Oceanografía General"] },
+  { id: "Ecología Marina", semester: 6, credits: 3, prereq: ["Bioestadística II", "Zoología Marina", "Botánica Marina"] },
+  { id: "Impacto Antropológico", semester: 6, credits: 4, prereq: ["Oceanografía General", "Análisis Instrumental"] },
+  { id: "Electivo 3", semester: 6, credits: 4 },
 
-  Object.keys(grouped).sort((a, b) => a - b).forEach(sem => {
-    const col = document.createElement("div");
-    col.className = "semester-column";
-    col.innerHTML = `<h3>Semestre ${sem}</h3>`;
-
-    grouped[sem].forEach(course => {
-      const div = document.createElement("div");
-      div.className = "course";
-      div.textContent = `${course.id} (${course.credits} cr.)`;
-
-      if (approved.has(course.id)) {
-        div.classList.add("completed");
-      } else if (isAvailable(course)) {
-        div.classList.add("available");
-      } else {
-        div.classList.add("locked");
-      }
-
-      div.onclick = () => {
-        if (!isAvailable(course) && !approved.has(course.id)) return;
-        if (approved.has(course.id)) {
-          approved.delete(course.id);
-        } else {
-          approved.add(course.id);
-        }
-        render();
-      };
-
-      col.appendChild(div);
-    });
-
-    chart.appendChild(col);
-  });
-}
-
-render();
+  // Semestre 7
+  { id: "Fisiología Animal", semester: 7, credits: 4, prereq: ["Zoología Marina", "Bioquímica"] },
+  { id: "Genética de Organismos", semester: 7, credits: 4, prereq: ["Bioquímica"] },
+  { id: "Legislación y Sustentabilidad"
