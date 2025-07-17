@@ -1,12 +1,11 @@
 :root {
   --blue: #e3f2fd;
   --blue-light: #bbdefb;
-  --blue-dark: #0d47a1;
-  --green: #a5d6a7;
-  --green-dark: #388e3c;
+  --blue-mid: #90caf9;
+  --blue-dark: #1565c0;
+  --blue-deep: #0d47a1;
   --gray: #cfd8dc;
   --gray-dark: #777;
-  --text-dark: #0d47a1;
 }
 
 body {
@@ -14,7 +13,7 @@ body {
   margin: 0;
   padding: 0;
   background: var(--blue);
-  color: var(--text-dark);
+  color: var(--blue-deep);
 }
 
 h1 {
@@ -40,11 +39,12 @@ h1 {
   -webkit-overflow-scrolling: touch;
 }
 
+/* Scroll amigable */
 #chart::-webkit-scrollbar {
   height: 6px;
 }
 #chart::-webkit-scrollbar-thumb {
-  background: #90caf9;
+  background: var(--blue-mid);
   border-radius: 3px;
 }
 
@@ -54,7 +54,7 @@ h1 {
   background: #fff;
   border-radius: 10px;
   border: 1px solid var(--blue-light);
-  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   padding: 1rem;
   min-width: 220px;
   max-width: 250px;
@@ -66,7 +66,7 @@ h1 {
   text-align: center;
   margin-top: 0;
   font-size: 1.1rem;
-  color: var(--blue-dark);
+  color: var(--blue-deep);
   border-bottom: 1px solid #ddd;
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
@@ -83,7 +83,7 @@ h1 {
   cursor: pointer;
 }
 
-/* Estados */
+/* Estados de los ramos */
 .course.locked {
   background: var(--gray);
   color: var(--gray-dark);
@@ -92,31 +92,38 @@ h1 {
 
 .course.available {
   background: var(--blue-light);
-  border-color: #64b5f6;
-  color: var(--blue-dark);
+  border-color: var(--blue-mid);
+  color: var(--blue-deep);
 }
 
 .course.completed {
-  background: var(--green);
-  border-color: var(--green-dark);
-  color: var(--green-dark);
+  background: var(--blue-mid);      /* Aprobado = azul fuerte */
+  border-color: var(--blue-dark);
+  color: var(--blue-deep);
 }
 
-/* 📱 Responsive */
+/* 📱 Responsive para celular */
 @media (max-width: 768px) {
   h1 {
     font-size: 1.6rem;
   }
+
   .instrucciones {
     font-size: 0.9rem;
   }
+
   .semester-column {
     min-width: 180px;
     max-width: 200px;
     padding: 0.8rem;
   }
+
   .course {
     font-size: 0.85rem;
     padding: 0.5rem;
+  }
+
+  #chart {
+    gap: 12px;
   }
 }
