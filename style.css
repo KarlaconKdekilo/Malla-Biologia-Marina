@@ -1,6 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #f2f2f2;
+  margin: 0;
   padding: 20px;
 }
 
@@ -11,36 +12,34 @@ h1 {
 
 #chart {
   display: flex;
-  flex-wrap: nowrap;
+  gap: 20px;
   overflow-x: auto;
   padding: 10px;
-  gap: 20px;
 }
 
 .semester-column {
-  background: white;
+  background-color: white;
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
-  min-width: 200px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  min-width: 220px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
 .semester-column h3 {
   margin-top: 0;
+  text-align: center;
 }
 
 .course {
-  background: #e1f5fe;
-  margin: 6px 0;
-  padding: 6px;
-  border-left: 5px solid #0288d1;
+  background-color: #e3f2fd;
+  border-left: 5px solid #1976d2;
+  padding: 8px;
+  margin: 5px 0;
   border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s;
+  cursor: default;
 }
 
 .course:hover {
-  background: #b3e5fc;
+  background-color: #bbdefb;
 }
-
