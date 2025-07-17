@@ -1,117 +1,122 @@
-/* Estilos base para todos los dispositivos */
+:root {
+  --blue: #e3f2fd;
+  --blue-light: #bbdefb;
+  --blue-dark: #0d47a1;
+  --green: #a5d6a7;
+  --green-dark: #388e3c;
+  --gray: #cfd8dc;
+  --gray-dark: #777;
+  --text-dark: #0d47a1;
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #e3f2fd;
   margin: 0;
-  padding: 20px;
+  padding: 0;
+  background: var(--blue);
+  color: var(--text-dark);
 }
 
 h1 {
   text-align: center;
-  color: #1565c0;
-  font-size: 26px;
-  margin-bottom: 10px;
+  font-size: 2rem;
+  padding: 1rem 0 0.5rem;
 }
 
 .instrucciones {
   text-align: center;
-  color: #555;
-  margin-bottom: 20px;
-  font-size: 16px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #444;
+  padding: 0 1rem;
 }
 
 #chart {
   display: flex;
-  flex-wrap: nowrap;
-  gap: 16px;
   overflow-x: auto;
-  padding: 10px;
-  scroll-behavior: smooth;
+  gap: 1rem;
+  padding: 1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Scroll amigable */
 #chart::-webkit-scrollbar {
-  height: 8px;
+  height: 6px;
 }
 #chart::-webkit-scrollbar-thumb {
-  background-color: #90caf9;
-  border-radius: 4px;
+  background: #90caf9;
+  border-radius: 3px;
 }
 
 .semester-column {
-  background-color: #ffffff;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #90caf9;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid var(--blue-light);
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  padding: 1rem;
   min-width: 220px;
   max-width: 250px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  flex-shrink: 0;
-  transition: transform 0.2s;
-}
-
-.semester-column:hover {
-  transform: scale(1.01);
+  display: flex;
+  flex-direction: column;
 }
 
 .semester-column h3 {
-  margin-top: 0;
   text-align: center;
-  color: #0d47a1;
-  font-size: 16px;
+  margin-top: 0;
+  font-size: 1.1rem;
+  color: var(--blue-dark);
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .course {
-  padding: 10px;
-  margin: 6px 0;
+  margin: 0.4rem 0;
+  padding: 0.6rem;
   border-radius: 6px;
+  font-size: 0.95rem;
   text-align: center;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.2s;
+  transition: 0.2s ease;
   border: 2px solid transparent;
+  cursor: pointer;
 }
 
-/* Colores de estado */
+/* Estados */
 .course.locked {
-  background-color: #cfd8dc;
-  color: #777;
+  background: var(--gray);
+  color: var(--gray-dark);
   cursor: not-allowed;
 }
 
 .course.available {
-  background-color: #bbdefb;
+  background: var(--blue-light);
   border-color: #64b5f6;
-  color: #0d47a1;
+  color: var(--blue-dark);
 }
 
 .course.completed {
-  background-color: #a5d6a7;
-  border-color: #388e3c;
-  color: #1b5e20;
+  background: var(--green);
+  border-color: var(--green-dark);
+  color: var(--green-dark);
 }
 
-/* 📱 Estilos para pantallas pequeñas (móvil) */
+/* 📱 Responsive */
 @media (max-width: 768px) {
   h1 {
-    font-size: 22px;
+    font-size: 1.6rem;
   }
-
   .instrucciones {
-    font-size: 14px;
+    font-size: 0.9rem;
   }
-
   .semester-column {
     min-width: 180px;
-    padding: 8px;
+    max-width: 200px;
+    padding: 0.8rem;
   }
-
   .course {
-    font-size: 13px;
-    padding: 8px;
-  }
-
-  #chart {
-    gap: 12px;
+    font-size: 0.85rem;
+    padding: 0.5rem;
   }
 }
