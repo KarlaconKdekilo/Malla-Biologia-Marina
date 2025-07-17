@@ -1,1 +1,46 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+#chart {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 10px;
+  gap: 20px;
+}
+
+.semester-column {
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  min-width: 200px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.semester-column h3 {
+  margin-top: 0;
+}
+
+.course {
+  background: #e1f5fe;
+  margin: 6px 0;
+  padding: 6px;
+  border-left: 5px solid #0288d1;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.course:hover {
+  background: #b3e5fc;
+}
 
