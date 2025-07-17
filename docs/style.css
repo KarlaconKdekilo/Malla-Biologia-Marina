@@ -30,11 +30,6 @@ h1 {
   border: 1px solid #90caf9;
   min-width: 220px;
   box-shadow: 0 0 5px rgba(0,0,0,0.05);
-  transition: transform 0.2s;
-}
-
-.semester-column:hover {
-  transform: scale(1.02);
 }
 
 .semester-column h3 {
